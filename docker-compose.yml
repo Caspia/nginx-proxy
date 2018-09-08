@@ -1,4 +1,4 @@
-version: '2'
+version: '3'
 services:
   nginx-proxy:
     build:
@@ -9,8 +9,12 @@ services:
       - "80:80"
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
+    networks:
+      default:
+        aliases:
+          - beluga
 
 networks:
   default:
     external:
-      name: nginx-proxy
+      name: beluga
